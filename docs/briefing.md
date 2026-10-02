@@ -1,58 +1,38 @@
 # Briefing - Novo site MCM
 
-## Contexto
+## Objetivo e status
 
-- Site atual (referência): https://mcm-capital.vercel.app/ — feito em Next.js, Tailwind CSS, fontes Poppins e Cormorant Garamond. O código dele não está neste repositório.
-- Identidade visual: azul escuro, dourado e tons claros.
-- Materiais de referência (fora do Git, ver `.gitignore`): Estudo Patrimonial MCM (PDF), mapa de marca e serviços (imagem) e um áudio de WhatsApp ainda sem transcrição.
+Apresentar com clareza MCM Seguros, MCM Partners e MCM Capital e preparar o visitante para uma conversa contextualizada. Copy e wireframes v1 são propostas para validação. O conteúdo do site atual foi rejeitado; não reutilizar sua redação.
 
-## Marca e frentes
+## Frentes
 
-MCM é a marca principal. As frentes de atuação são:
+- MCM Seguros: saúde, proteção em vida, vida e bens.
+- MCM Partners: planejamento e alternativas de construção patrimonial.
+- MCM Capital: crédito e aquisição planejada.
 
-- **MCM Seguros** — proteção da renda, da família e dos bens.
-- **MCM Partners** — planejamento, investimentos e construção patrimonial.
-- **MCM Capital** — financiamento imobiliário, home equity e soluções de crédito.
+Consórcio em Partners integra a construção patrimonial; em Capital é comparado com alternativas para aquisição planejada.
 
-Posicionamento: "Estrutura para transformar renda em patrimônio". Eixos do site atual: proteção, rentabilidade e perpetuação.
+## Arquitetura
 
-## Objetivo principal
+Início (/), Seguros (/seguros), Partners (/partners), Capital (/capital), Sobre (/sobre), Contato (/contato) e Privacidade (/privacidade).
 
-Apresentar com clareza as três frentes da MCM e mostrar como se complementam.
+Home: abertura, problema, método, três frentes, situações de entrada, equipe e contato. Páginas das frentes: soluções, processo, dúvidas e contato contextual.
 
-## Arquitetura proposta
+## Referências
 
-| Página | Papel |
-| --- | --- |
-| Início | Proposta da MCM e apresentação imediata das três frentes |
-| MCM Seguros | Página própria da frente |
-| MCM Partners | Página própria da frente |
-| MCM Capital | Página própria da frente |
-| Sobre a MCM | Equipe, experiência e metodologia |
-| Contato | Acesso à primeira conversa |
+- Imagem original: estrutura das três frentes e portfólio inicial.
+- Áudio original: página principal como apresentação comercial, começando pelo problema e método, com aprofundamento pelas frentes. Transcrição automática em docs/audio-transcricao.txt; pode conter erros.
+- Estudo Patrimonial MCM.pdf: método de comparação, premissas e riscos. Não publicar resultados como promessa nem incluir caso público na v1 sem validação e autorização.
+- https://mcm-capital.vercel.app/: inventário de contatos e equipe, a confirmar.
 
-Cada página de frente segue a mesma sequência: o que faz, para quem faz sentido, quais soluções oferece e como funciona o atendimento.
+O objetivo principal é a clareza das três frentes; a orientação comercial do áudio complementa esse objetivo.
 
-## Sequência da página inicial
+## Implementação e fontes
 
-1. Proposta direta: "Proteja sua renda, construa patrimônio e encontre o crédito adequado aos seus planos."
-2. Situações do cliente: proteger a família, investir, adquirir um imóvel, viabilizar um projeto.
-3. As três frentes, com serviços claros em cada uma.
-4. Método de trabalho: diagnóstico, estratégia, implementação e acompanhamento.
-5. Exemplo concreto: estudo patrimonial com premissas e riscos explícitos.
-6. Equipe e credibilidade.
-7. Convite para conversar.
+O novo código já existe neste repositório em Next.js, TypeScript e Tailwind CSS. A aplicação usa src/lib/content.ts. Copy e instruções estão em conteudo/; PDF em output/pdf/.
 
-## Pontos em aberto
+Azul, dourado e as fontes atuais são referências de implementação, ainda sujeitas à validação visual.
 
-- **Consórcio:** em Partners é estratégia de construção patrimonial; em Capital é alternativa para aquisição planejada. Definir a explicação que evita sobreposição entre as frentes.
-- Transcrever o áudio do WhatsApp.
-- Confirmar a stack (Next.js + Tailwind, como o site atual?).
-- Definir domínio e hospedagem.
+## Pendências
 
-## Direção do áudio (transcrição de `tmp/audio-transcript.txt`)
-
-- A página inicial ("página mãe") deve funcionar como **página de vendas / apresentação**, começando **pelo problema**: o cliente gera muita renda, mas não constrói patrimônio. Depois vem a metodologia (como a MCM resolve).
-- O visitante que preenche o formulário do site já deve chegar **pronto para comprar**.
-- A navegação **segmenta** o visitante: quem entra em MCM Seguros é conduzido cada vez mais para Seguros; quem entra em Partners, para Partners. As subpáginas aprofundam e deixam o lead mais preparado para fechar.
-- Isso reforça o objetivo de conversão no formulário, além de apresentar as três frentes.
+Validar copy e wireframes; confirmar portfólio, equipe, contatos, identidade visual, escopo e registros; definir domínio e hospedagem; configurar destino do formulário e concluir a política de privacidade conforme a operação real.

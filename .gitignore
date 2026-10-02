@@ -30,3 +30,6 @@ next-env.d.ts
 
 # Arquivos temporários
 /tmp/
+
+__pycache__/
+*.py[cod]
