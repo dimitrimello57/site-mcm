@@ -49,3 +49,10 @@ Cada página de frente segue a mesma sequência: o que faz, para quem faz sentid
 - Transcrever o áudio do WhatsApp.
 - Confirmar a stack (Next.js + Tailwind, como o site atual?).
 - Definir domínio e hospedagem.
+
+## Direção do áudio (transcrição de `tmp/audio-transcript.txt`)
+
+- A página inicial ("página mãe") deve funcionar como **página de vendas / apresentação**, começando **pelo problema**: o cliente gera muita renda, mas não constrói patrimônio. Depois vem a metodologia (como a MCM resolve).
+- O visitante que preenche o formulário do site já deve chegar **pronto para comprar**.
+- A navegação **segmenta** o visitante: quem entra em MCM Seguros é conduzido cada vez mais para Seguros; quem entra em Partners, para Partners. As subpáginas aprofundam e deixam o lead mais preparado para fechar.
+- Isso reforça o objetivo de conversão no formulário, além de apresentar as três frentes.
