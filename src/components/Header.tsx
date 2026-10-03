@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect,useRef,useState } from "react";
@@ -37,7 +38,7 @@ export function Header() {
   // Simple utility pages need an opaque header even before scrolling.
   const opaque=pathname==="/privacidade";
   return <header className={`site-header ${scrolled||opaque?"is-scrolled":""} ${aberto?"is-open":""}`}>
-    <div className="header-inner"><button ref={buttonRef} className="header-menu-button" type="button" aria-expanded={aberto} aria-controls="menu-mcm" aria-label={aberto?compartilhado.fecharMenu:compartilhado.abrirMenu} onClick={()=>setAbertoEm(aberto?null:pathname)}><span className="menu-icon" aria-hidden="true"/><span>{aberto?"Fechar":"Menu"}</span></button><Link href="/" className="header-brand" aria-label="MCM - Início"><Image src="/logo-mcm-branca.svg" alt="" width={720} height={269} priority unoptimized className="h-auto w-[74px] sm:w-[106px]"/></Link><Link href="/contato" className="header-contact"><span className="contact-desktop">{compartilhado.botaoTopo}</span><span className="contact-mobile sm:hidden">Contato</span><Arrow /></Link></div>
+    <div className="header-inner"><button ref={buttonRef} className="header-menu-button" type="button" aria-expanded={aberto} aria-controls="menu-mcm" aria-label={aberto?compartilhado.fecharMenu:compartilhado.abrirMenu} onClick={()=>setAbertoEm(aberto?null:pathname)}><span className="menu-icon" aria-hidden="true"/><span>{aberto?"Fechar":"Menu"}</span></button><Link href="/" className="header-brand" aria-label="MCM - Início"><Image src={asset("/logo-mcm-branca.svg")} alt="" width={720} height={269} priority unoptimized className="h-auto w-[74px] sm:w-[106px]"/></Link><Link href="/contato" className="header-contact"><span className="contact-desktop">{compartilhado.botaoTopo}</span><span className="contact-mobile sm:hidden">Contato</span><Arrow /></Link></div>
     <div id="menu-mcm" hidden={!aberto} ref={panelRef} className="header-menu-panel"><div className="menu-content"><nav aria-label="Principal"><ul className="menu-links">{navegacao.map(item=><li key={item.href}><Link href={item.href} aria-current={current(item.href)?"page":undefined} onClick={()=>setAbertoEm(null)}>{item.label}<span aria-hidden="true">→</span></Link></li>)}<li><Link href="/contato" onClick={()=>setAbertoEm(null)}>Fale com a MCM<span aria-hidden="true">→</span></Link></li></ul></nav><div className="menu-aside"><p className="eyebrow">Uma visão para cada etapa</p><p>{compartilhado.rodape.empresa}</p></div></div></div>
   </header>;
 }

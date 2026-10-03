@@ -209,7 +209,7 @@ body:has(.utility-page) .site-header {background:#102b35;}
 .hero-actions .arrow-link .arrow-circle { width:28px; height:28px; }@media(max-width:600px){ .header-inner{min-height:84px} .header-menu-button{font-size:11px;gap:8px} .header-contact{font-size:11px} }
 
 /* ---- Bethany Elingston: fonte dos títulos (a mesma das redes sociais) ---- */
-@font-face { font-family:"Bethany Elingston"; src:url("/fonts/bethany-elingston.otf") format("opentype"); font-weight:400; font-style:normal; font-display:swap; size-adjust:112%; }
+@font-face { font-family:"Bethany Elingston"; src:url("./fonts/bethany-elingston.otf") format("opentype"); font-weight:400; font-style:normal; font-display:swap; size-adjust:112%; }
 body :is(h1,h2):not(.site-footer *) { font-family:"Bethany Elingston","Helvetica Neue",Arial,sans-serif; font-weight:400; font-synthesis:none; letter-spacing:0; line-height:1.2; text-wrap:balance; }
 
 /* Contato: todos os campos, interesse e ação no mesmo formulário. */

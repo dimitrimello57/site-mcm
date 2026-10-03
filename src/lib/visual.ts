@@ -1,9 +1,11 @@
 // Fotografias editoriais, não representam clientes, imóveis ou equipe da MCM.
 // Origem e créditos: docs/direcao-visual.md.
+import { asset } from "./asset";
+
 export const imagens = {
-  horizonte: { src: "/images/horizonte.webp", alt: "Falésias verdes e o horizonte do mar, fotografados do alto" },
-  familia: { src: "/images/familia.webp", alt: "Família caminhando à beira-mar ao entardecer" },
-  arquitetura: { src: "/images/arquitetura.webp", alt: "Arquitetura residencial contemporânea entre árvores" },
+  horizonte: { src: asset("/images/horizonte.webp"), alt: "Falésias verdes e o horizonte do mar, fotografados do alto" },
+  familia: { src: asset("/images/familia.webp"), alt: "Família caminhando à beira-mar ao entardecer" },
+  arquitetura: { src: asset("/images/arquitetura.webp"), alt: "Arquitetura residencial contemporânea entre árvores" },
 };
 
 export const visuaisFrente = {

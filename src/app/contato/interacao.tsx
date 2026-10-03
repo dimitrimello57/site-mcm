@@ -1,14 +1,17 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
 import { ContatoInterativo } from "@/components/ContatoInterativo";
 import { assuntos, type Frente } from "@/lib/content";
 
-type Param = string | string[] | undefined;
+type Param = string | string[] | undefined | null;
 
 const frentesPermitidas: Frente[] = ["seguros", "partners", "capital", "nao-sei"];
 
 // Lista permitida: qualquer valor desconhecido seleciona "Ainda não sei".
 export function interpretarParametros(frente: Param, assunto: Param) {
-  const f = Array.isArray(frente) ? frente[0] : frente;
-  const a = Array.isArray(assunto) ? assunto[0] : assunto;
+  const f = Array.isArray(frente) ? frente[0] : (frente ?? undefined);
+  const a = Array.isArray(assunto) ? assunto[0] : (assunto ?? undefined);
 
   const solucao = a && Object.hasOwn(assuntos, a) ? a : "";
   let frenteFinal: Frente | "" = "";
@@ -23,11 +26,15 @@ export function interpretarParametros(frente: Param, assunto: Param) {
   return { frente: frenteFinal, solucao };
 }
 
-export function ContatoInteracao({ frente, assunto }: { frente: Param; assunto: Param }) {
-  const { frente: frenteInicial, solucao } = interpretarParametros(frente, assunto);
+// Lê os parâmetros no navegador, para a página de contato poder ser estática.
+export function ContatoInteracao() {
+  const params = useSearchParams();
+  const { frente, solucao } = interpretarParametros(params.get("frente"), params.get("assunto"));
   return (
     <ContatoInterativo
-      frenteInicial={frenteInicial}
+      // Remonta se a URL mudar (ex.: navegar de um CTA para outro).
+      key={`${frente}|${solucao}`}
+      frenteInicial={frente}
       assuntoInicial={solucao}
     />
   );

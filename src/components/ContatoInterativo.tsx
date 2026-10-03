@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { asset } from "@/lib/asset";
 import {
   assuntos,
   contato,
@@ -75,7 +76,7 @@ export function ContatoInterativo({
     setErros({});
     setEstado("enviando");
     try {
-      const resposta = await fetch("/api/contato", {
+      const resposta = await fetch(asset("/api/contato"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
