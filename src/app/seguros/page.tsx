@@ -17,9 +17,9 @@ export default function Seguros() {
       </Section>
 
       <Section bloco="S03" titulo={s03.h2}>
-        <ul className="grid gap-4 md:grid-cols-2">
+        <ul className="revision-list">
           {s03.itens.map((item) => (
-            <li key={item} className="border-l-2 border-gold pl-4 text-lg">
+            <li key={item} >
               {item}
             </li>
           ))}

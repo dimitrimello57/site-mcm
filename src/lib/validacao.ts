@@ -1,7 +1,7 @@
 import { estados, type Frente } from "./content";
 
-export type DadosContato = { nome: string; telefone: string; assunto: Frente | ""; mensagem: string };
-export type ErrosContato = Partial<Record<"nome" | "telefone" | "assunto", string>>;
+export type DadosContato = { nome: string; telefone: string; email?: string; assunto: Frente | ""; mensagem: string };
+export type ErrosContato = Partial<Record<"nome" | "telefone" | "email" | "assunto", string>>;
 
 const frentesValidas: Frente[] = ["seguros", "partners", "capital", "nao-sei"];
 
@@ -20,10 +20,12 @@ export function validarContato(d: DadosContato):
   | { ok: false; erros: ErrosContato } {
   const erros: ErrosContato = {};
   const nome = d.nome.trim();
+  const email = (d.email ?? "").trim();
+  if (email && (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) erros.email = "Informe um e-mail válido ou deixe o campo em branco.";
   const mensagem = d.mensagem.trim().slice(0, 1000);
   if (!nome || nome.length > 120) erros.nome = estados.nomeVazio;
   if (!telefoneValido(d.telefone)) erros.telefone = estados.telefoneInvalido;
   if (!frentesValidas.includes(d.assunto as Frente)) erros.assunto = estados.assuntoAusente;
   if (Object.keys(erros).length > 0) return { ok: false, erros };
-  return { ok: true, valores: { nome, telefone: d.telefone.trim(), assunto: d.assunto, mensagem } };
+  return { ok: true, valores: { nome, telefone: d.telefone.trim(), email, assunto: d.assunto, mensagem } };
 }

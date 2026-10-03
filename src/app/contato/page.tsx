@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Breadcrumb, Container, Section } from "@/components/ui";
+import { Breadcrumb, EditorialHero, Section } from "@/components/ui";
 import { ContatoInteracao } from "./interacao";
+import { imagens } from "@/lib/visual";
 import { contato } from "@/lib/content";
 import { paginaMetadata } from "@/lib/seo";
 
@@ -11,15 +12,7 @@ export default async function Contato({ searchParams }: PageProps<"/contato">) {
   return (
     <>
       <Breadcrumb pagina="Contato" />
-      <section data-bloco="T01" className="bg-navy text-sand">
-        <Container className="py-16 sm:py-24">
-          <p className="text-xs font-medium uppercase tracking-[0.25em] text-gold-light">{contato.t01.identificador}</p>
-          <h1 className="mt-4 max-w-4xl font-serif text-4xl font-semibold leading-tight sm:text-5xl">
-            {contato.t01.h1}
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-sand/85">{contato.t01.texto}</p>
-        </Container>
-      </section>
+      <EditorialHero bloco="T01" identificador={contato.t01.identificador} titulo={contato.t01.h1} texto={contato.t01.texto} imagem={imagens.horizonte.src} />
 
       <ContatoInteracao frente={params.frente} assunto={params.assunto} />
 

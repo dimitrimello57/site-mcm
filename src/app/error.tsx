@@ -7,7 +7,7 @@ import { whatsappUrl } from "@/lib/site";
 export default function Erro({ unstable_retry }: { error: Error & { digest?: string }; unstable_retry: () => void }) {
   const { titulo, texto, botao } = estados.erroSite;
   return (
-    <Container className="py-24">
+    <Container className="utility-page pb-24">
       <h1 className="font-serif text-4xl font-semibold sm:text-5xl">{titulo}</h1>
       <p className="mt-4 max-w-xl text-lg text-navy/80">{texto}</p>
       <div className="mt-8 flex flex-col gap-3 sm:flex-row">

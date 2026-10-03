@@ -21,13 +21,13 @@ export default function Partners() {
       <HeroFrente bloco="P01" hero={p01} />
 
       <Section bloco="P02" tom="areia" titulo={p02.h2}>
-        <ol className="grid gap-4 md:grid-cols-2">
+        <ol className="question-list">
           {p02.perguntas.map((q, i) => (
-            <li key={q} className="flex gap-4 border border-navy/15 bg-background p-5">
-              <span aria-hidden="true" className="font-serif text-3xl text-gold">
+            <li key={q} >
+              <span aria-hidden="true" className="question-number">
                 {i + 1}
               </span>
-              <p className="text-lg">{q}</p>
+              <p >{q}</p>
             </li>
           ))}
         </ol>

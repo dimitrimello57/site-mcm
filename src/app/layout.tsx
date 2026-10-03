@@ -1,24 +1,11 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Poppins } from "next/font/google";
+import { EditorialMotion } from "@/components/EditorialMotion";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { compartilhado } from "@/lib/content";
 import { isPreview, siteUrl } from "@/lib/env";
 import "./globals.css";
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  display: "swap",
-});
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  display: "swap",
-});
+import "./editorial.css";
 
 export const metadata: Metadata = {
   ...(siteUrl && { metadataBase: new URL(siteUrl) }),
@@ -28,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pt-BR" className={`${poppins.variable} ${cormorant.variable} h-full antialiased`}>
+    <html lang="pt-BR" className="h-full antialiased">
       <body className="flex min-h-full flex-col">
         <a
           href="#conteudo"
@@ -37,11 +24,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {compartilhado.atalho}
         </a>
         {isPreview && (
-          <p className="bg-gold px-4 py-2 text-center text-xs font-medium text-navy">
+          <p className="preview-banner">
             Preview para validação. Conteúdo sujeito a aprovação da MCM; não indexado.
           </p>
         )}
         <Header />
+        <EditorialMotion />
         <main id="conteudo" tabIndex={-1} className="flex-1 outline-none">
           {children}
         </main>

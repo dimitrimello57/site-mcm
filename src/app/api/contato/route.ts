@@ -16,6 +16,9 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, erro: "invalido" }, { status: 400 });
   }
 
+  if (!corpo || typeof corpo !== "object" || Array.isArray(corpo)) {
+    return Response.json({ ok: false, erro: "invalido" }, { status: 400 });
+  }
   const dados = corpo as Record<string, unknown>;
   // Campo isca: robôs preenchem, pessoas não veem. Finge sucesso sem encaminhar.
   if (typeof dados.site === "string" && dados.site !== "") {
@@ -25,6 +28,7 @@ export async function POST(request: Request) {
   const resultado = validarContato({
     nome: String(dados.nome ?? ""),
     telefone: String(dados.telefone ?? ""),
+    email: String(dados.email ?? ""),
     assunto: String(dados.assunto ?? "") as Frente | "",
     mensagem: String(dados.mensagem ?? ""),
   });
@@ -32,7 +36,7 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, erro: "invalido", campos: resultado.erros }, { status: 400 });
   }
 
-  const solucao = typeof dados.solucao === "string" && dados.solucao in assuntos ? dados.solucao : null;
+  const solucao = typeof dados.solucao === "string" && Object.hasOwn(assuntos, dados.solucao) && assuntos[dados.solucao].frente === resultado.valores.assunto ? dados.solucao : null;
 
   try {
     const resposta = await fetch(destino, {

@@ -1,6 +1,5 @@
 import { ContatoInterativo } from "@/components/ContatoInterativo";
 import { assuntos, type Frente } from "@/lib/content";
-import { isPreview, mostrarFormulario, mostrarPrivacidade } from "@/lib/env";
 
 type Param = string | string[] | undefined;
 
@@ -30,9 +29,6 @@ export function ContatoInteracao({ frente, assunto }: { frente: Param; assunto: 
     <ContatoInterativo
       frenteInicial={frenteInicial}
       assuntoInicial={solucao}
-      mostrarFormulario={mostrarFormulario}
-      demonstracao={isPreview && !process.env.CONTACT_WEBHOOK_URL}
-      linkPrivacidade={mostrarPrivacidade}
     />
   );
 }
